@@ -1,0 +1,6 @@
+# Ignore README files
+README.md
+**/README.md
+README
+**/README
+
