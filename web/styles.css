@@ -11,6 +11,84 @@ body {
   gap: 16px;
 }
 
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+.mode-toggle {
+  margin-bottom: 8px;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-label input[type="checkbox"] {
+  display: none;
+}
+
+.toggle-slider {
+  position: relative;
+  width: 50px;
+  height: 24px;
+  background: #444;
+  border-radius: 24px;
+  transition: background 0.3s;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s;
+}
+
+.toggle-label input[type="checkbox"]:checked + .toggle-slider {
+  background: #4CAF50;
+}
+
+.toggle-label input[type="checkbox"]:checked + .toggle-slider::before {
+  transform: translateX(26px);
+}
+
+.toggle-text {
+  font-size: 14px;
+  color: #eee;
+}
+
+#simulation-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  min-width: 300px;
+}
+
+.sim-sensor-btn:hover {
+  background: #333 !important;
+  border-color: #777 !important;
+  transform: translateY(-2px);
+}
+
+.sim-sensor-btn:active {
+  transform: translateY(0);
+}
+
 /* Shared popup styles */
 .popup {
   position: fixed;
