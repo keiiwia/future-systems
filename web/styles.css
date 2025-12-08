@@ -14,20 +14,27 @@ html, body {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  justify-items: center; /* center items within each cell */
+  align-items: start;
   font-family: 'Bedstead', system-ui, sans-serif;
   background: #000;
   color: #D7DDCB;
   gap: 16px;
   max-height: 100vh;
-  padding-top: 32vh; /* place content just above center */
+  padding-top: 0; /* start grid at top */
 }
 
 button {
   font-family: 'Bedstead', system-ui, sans-serif;
+}
+
+#status {
+  grid-column: 4 / 6; /* cols 4-5 */
+  grid-row: 5 / 7;    /* rows 5-6 */
+  z-index: 900;
 }
 
 .controls {
@@ -40,6 +47,8 @@ button {
   overflow: hidden;
   position: relative;
   z-index: 900;
+  grid-column: 4 / 6; /* cols 4-5 */
+  grid-row: 5 / 7;    /* rows 5-6 */
 }
 
 .mode-toggle {
@@ -169,4 +178,17 @@ button {
   pointer-events: none;
   position: relative;
   z-index: 500; /* below other interactive content */
+  grid-column: 4 / 6; /* cols 4-5 */
+  grid-row: 3 / 4;    /* rows 3-4 */
+}
+
+#title-img {
+  width: min(65vw, 420px);
+  object-fit: contain;
+  pointer-events: none;
+  position: relative;
+  z-index: 700; /* above gif */
+  grid-column: 4 / 6; /* cols 4-5 */
+  grid-row: 4 / 5;    /* rows 4 */
+  margin-top: -80px;  /* significantly more overlap with the gif */
 }
