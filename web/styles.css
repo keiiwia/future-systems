@@ -14,11 +14,8 @@ body {
 /* Shared popup styles */
 .popup {
   position: fixed;
-  inset: 0;
   display: none;           /* default hidden */
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
 }
 
 .popup-content {
@@ -27,8 +24,10 @@ body {
   padding: 24px 32px;
   border-radius: 16px;
   max-width: 300px;
+  min-width: 250px;
   text-align: center;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  position: relative;
 }
 
 .popup-close {

@@ -23,7 +23,7 @@ Each message is a single line terminated with a newline character (`\n`).
 ### Sensor Data Format
 
 - **Format**: Comma-separated values (CSV)
-- **Values**: 11 integers (one per sensor)
+- **Values**: 9 integers (one per sensor)
 - **Value Range**: 0 or 1
   - `0` = Sensor not triggered (light detected / below threshold)
   - `1` = Sensor triggered (dark / above threshold)
@@ -32,9 +32,9 @@ Each message is a single line terminated with a newline character (`\n`).
 ### Example Messages
 
 ```
-0,0,0,0,0,0,0,0,0,0,0\n
-0,1,0,1,0,0,1,0,0,1,0\n
-1,1,1,1,1,1,1,1,1,1,1\n
+0,0,0,0,0,0,0,0,0\n
+0,1,0,1,0,0,1,0,0\n
+1,1,1,1,1,1,1,1,1\n
 ```
 
 ### Message Frequency
@@ -56,14 +56,12 @@ Each message is a single line terminated with a newline character (`\n`).
 | 6            | 8                    | popup-6      |
 | 7            | 9                    | popup-7      |
 | 8            | 10                   | popup-8      |
-| 9            | 11                   | popup-9      |
-| 10           | 12                   | popup-10     |
 
 ## Error Handling
 
 ### Web Application
 
-- If fewer than 11 values are received, the line is logged as a warning and ignored
+- If fewer than 9 values are received, the line is logged as a warning and ignored
 - Invalid values (not 0 or 1) are logged as warnings and ignored
 - Connection errors are displayed in the status element
 
@@ -76,7 +74,7 @@ Each message is a single line terminated with a newline character (`\n`).
 
 Both hardware and software should use matching constants:
 
-- **Number of Sensors**: 11
+- **Number of Sensors**: 9
 - **Baud Rate**: 9600
 
 These are defined in:

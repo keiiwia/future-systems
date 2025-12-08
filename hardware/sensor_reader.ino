@@ -1,13 +1,12 @@
-// config
-const int NUM_SENSORS = 11;
+const int NUM_SENSORS = 9;
 const int BAUD_RATE = 9600;
 
 // DO pins from LM393 modules
 const int SENSOR_PINS[NUM_SENSORS] = {
-  2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+  2, 3, 4, 5, 6, 7, 8, 9, 10
 };
 
-// Sensor state array
+// sensor state array
 int sensorStates[NUM_SENSORS];
 
 void setup() {
@@ -28,17 +27,14 @@ void setup() {
   // }
 }
 
-void loop() {
-  // Read all sensors
+void loop() { //read sensors
   for (int i = 0; i < NUM_SENSORS; i++) {
     sensorStates[i] = digitalRead(SENSOR_PINS[i]);
   }
-  
-  // Send sensor data as comma-separated values
   for (int i = 0; i < NUM_SENSORS; i++) {
     Serial.print(sensorStates[i]);
     if (i < NUM_SENSORS - 1) {
-      Serial.print(",");
+      Serial.print(","); //comma-separated values; js takes care of comma separation
     }
   }
   Serial.println(); // newline to terminate the line
