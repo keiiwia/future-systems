@@ -50,7 +50,6 @@ function createSimulationUI(numSensors) {
     button.className = 'sim-sensor-btn';
     button.style.padding = '12px 16px';
     button.style.border = '2px solid #444';
-    button.style.borderRadius = '8px';
     button.style.background = '#222';
     button.style.color = '#eee';
     button.style.cursor = 'pointer';

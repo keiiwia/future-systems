@@ -17,18 +17,24 @@ body {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
-  justify-items: center; /* center items within each cell */
+  justify-items: center; 
   align-items: start;
   font-family: 'Bedstead', system-ui, sans-serif;
   background: #000;
   color: #D7DDCB;
   gap: 16px;
   max-height: 100vh;
-  padding-top: 0; /* start grid at top */
-}
-
+  padding-top: 0;
+} 
 button {
   font-family: 'Bedstead', system-ui, sans-serif;
+  background-color: #D7DDCB;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: black;
+  color: #D7DDCB;
 }
 
 #status {
@@ -72,8 +78,6 @@ button {
   width: 64px;
   height: 30px;
   background: #444;
-  border-radius: 30px;
-  transition: background 0.3s;
 }
 
 .toggle-slider::before {
@@ -81,7 +85,6 @@ button {
   position: absolute;
   width: 24px;
   height: 24px;
-  border-radius: 50%;
   background: #fff;
   top: 3px;
   left: 3px;
@@ -89,7 +92,7 @@ button {
 }
 
 .toggle-label input[type="checkbox"]:checked + .toggle-slider {
-  background: #4CAF50;
+  background: #d2be4e;
 }
 
 .toggle-label input[type="checkbox"]:checked + .toggle-slider::before {
@@ -126,7 +129,7 @@ button {
   transform: translateY(0);
 }
 
-/* Shared popup styles */
+/* shared popup styles */
 .popup {
   position: fixed;
   display: none;           /* default hidden */
@@ -137,7 +140,6 @@ button {
   background: #fff;
   color: #111;
   padding: 24px 32px;
-  border-radius: 16px;
   max-width: 300px;
   min-width: 250px;
   text-align: center;
@@ -168,7 +170,6 @@ button {
   transform-origin: center;
 }
 
-/* intro gif */
 #hero-gif {
   width: min(65vw, 420px);
   max-height: 260px;
@@ -177,7 +178,7 @@ button {
   margin-bottom: 8px;
   pointer-events: none;
   position: relative;
-  z-index: 500; /* below other interactive content */
+  z-index: 500;
   grid-column: 4 / 6; /* cols 4-5 */
   grid-row: 3 / 4;    /* rows 3-4 */
 }
@@ -187,8 +188,8 @@ button {
   object-fit: contain;
   pointer-events: none;
   position: relative;
-  z-index: 700; /* above gif */
+  z-index: 700; 
   grid-column: 4 / 6; /* cols 4-5 */
   grid-row: 4 / 5;    /* rows 4 */
-  margin-top: -80px;  /* significantly more overlap with the gif */
+  margin-top: -80px; 
 }
