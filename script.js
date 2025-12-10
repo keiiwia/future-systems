@@ -7,15 +7,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const simulationControls = document.getElementById("simulation-controls");
   const heroGif = document.getElementById("hero-gif");
   const titleImg = document.getElementById("title-img");
+  const popupImages = Array.from(document.querySelectorAll(".popup-img"));
 
   const numSensors = window.NUM_SENSORS;
   let currentState = "landing"; //start at title screen/landing page
+  let hardwareConnected = false;
+
+  function hideLandingVisuals() {
+    heroGif.style.display = "none";
+    titleImg.style.display = "none";
+  }
 
   // popup manager (NUM_SENSORS in hardware.js)
   initPopupManager(numSensors, statusEl);
 
   // hardware connection
-  initHardware(connectBtn, statusEl);
+  initHardware(connectBtn, statusEl, () => {
+    hardwareConnected = true;
+    hideLandingVisuals(); // remove hero/title once serial is initialized
+  });
 
   // simulation init
   initSimulation(numSensors, simulationControls);
@@ -26,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const isLanding = next === "landing";
     const isHardware = next === "hardware";
     const isSimulation = next === "simulation";
-    const showHeroTitle = !isSimulation;
+    const showHeroTitle = !isSimulation && !hardwareConnected;
     heroGif.style.display = showHeroTitle ? "block" : "none";
     titleImg.style.display = showHeroTitle ? "block" : "none";
     hardwareControls.style.display = isSimulation ? "none" : "block";
@@ -44,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentState === "hardware") {
       updatePopups(sensorStates);
     }
+    updatePopupImages(sensorStates);
   });
 
   //simulation callback
@@ -52,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       updatePopups(sensorStates);
       statusEl.textContent = `Simulation: ${sensorStates.join(", ")}`;
     }
+    updatePopupImages(sensorStates);
   });
 
   // mode toggle handler (landing + simulation/hardware switch)
@@ -70,4 +82,12 @@ document.addEventListener("DOMContentLoaded", () => {
     setState("hardware");
   });
   setState("landing");
+
+  function updatePopupImages(sensorStates) {
+    for (let i = 0; i < sensorStates.length && i < popupImages.length; i++) {
+      const img = popupImages[i];
+      if (!img) continue;
+      img.style.display = sensorStates[i] === 0 ? "block" : "none";
+    }
+  }
 });

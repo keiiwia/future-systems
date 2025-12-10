@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>Arduino → JS Demo</title>
+  <title>future systems: humans and/as gods</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/png" href="assets/images/images/crtthumb.png" />
 </head>
@@ -26,83 +26,120 @@
       <label class="toggle-label">
         <input type="checkbox" id="mode-toggle" />
         <span class="toggle-slider"></span>
-        <span class="toggle-text">Simulation Mode</span>
+        <span class="toggle-text">simulate</span>
       </label>
     </div>
     <div id="simulation-controls" style="display: none;"></div>
   </div>
   <div id="status">Not connected</div>
+  <div id="sensor-tabs" aria-live="polite"></div>
   <img id="frame-overlay" src="assets/images/images/crttv.png" alt="CRT frame" />
 
   <!-- Popup 1 -->
   <div class="popup" id="popup-0">
     <div class="popup-content">
-      <div class="popup-text">Sensor 1 triggered!</div>
-      <button class="popup-close">Close</button>
+      <img
+        class="popup-img"
+        data-sensor-index="0"
+        src="assets/images/images/tabs/tab-1.png"
+        alt="Sensor 1 image"
+      />
     </div>
   </div>
 
   <!-- Popup 2 -->
   <div class="popup" id="popup-1">
     <div class="popup-content">
-      <div class="popup-text">Sensor 2 triggered!</div>
-      <button class="popup-close">Close</button>
+      <img
+        class="popup-img"
+        data-sensor-index="1"
+        src="assets/images/images/tabs/tab-2.png"
+        alt="Sensor 2 image"
+      />
     </div>
   </div>
 
   <!-- Popup 3 -->
   <div class="popup" id="popup-2">
     <div class="popup-content">
-      <div class="popup-text">Sensor 3 triggered!</div>
-      <button class="popup-close">Close</button>
+      <img
+        class="popup-img"
+        data-sensor-index="2"
+        src="assets/images/images/tabs/tab-3.png"
+        alt="Sensor 3 image"
+      />
     </div>
   </div>
 
   <!-- Popup 4 -->
   <div class="popup" id="popup-3">
     <div class="popup-content">
-      <div class="popup-text">Sensor 4 triggered!</div>
-      <button class="popup-close">Close</button>
+      <img
+        class="popup-img"
+        data-sensor-index="3"
+        src="assets/images/images/tabs/tab-4.png"
+        alt="Sensor 4 image"
+      />
     </div>
   </div>
 
   <!-- Popup 5 -->
   <div class="popup" id="popup-4">
     <div class="popup-content">
-      <div class="popup-text">Sensor 5 triggered!</div>
-      <button class="popup-close">Close</button>
+      <img
+        class="popup-img"
+        data-sensor-index="4"
+        src="assets/images/images/tabs/tab-5.png"
+        alt="Sensor 5 image"
+      />
     </div>
   </div>
 
   <!-- Popup 6 -->
   <div class="popup" id="popup-5">
     <div class="popup-content">
-      <div class="popup-text">Sensor 6 triggered!</div>
-      <button class="popup-close">Close</button>
+      <img
+        class="popup-img"
+        data-sensor-index="5"
+        src="assets/images/images/tabs/tab-6.png"
+        alt="Sensor 6 image"
+      />
     </div>
   </div>
 
   <!-- Popup 7 -->
   <div class="popup" id="popup-6">
     <div class="popup-content">
-      <div class="popup-text">Sensor 7 triggered!</div>
-      <button class="popup-close">Close</button>
+      <img
+        class="popup-img"
+        data-sensor-index="6"
+        src="assets/images/images/tabs/tab-7.png"
+        alt="Sensor 7 image"
+      />
     </div>
   </div>
 
   <!-- Popup 8 -->
   <div class="popup" id="popup-7">
     <div class="popup-content">
-      <div class="popup-text">Sensor 8 triggered!</div>
-      <button class="popup-close">Close</button>
+      <img
+        class="popup-img"
+        data-sensor-index="7"
+        src="assets/images/images/tabs/tab.png"
+        alt="Sensor 8 image"
+      />
     </div>
   </div>
 
   <!-- Popup 9 -->
   <div class="popup" id="popup-8">
     <div class="popup-content">
-      <div class="popup-text">Sensor 9 triggered!</div>
-      <button class="popup-close">Close</button>
+      <img
+        class="popup-img"
+        data-sensor-index="8"
+        src="assets/images/images/tabs/tab.png"
+        alt="Sensor 9 image"
+      />
     </div>
   </div>
 

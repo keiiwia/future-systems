@@ -34,7 +34,7 @@ void loop() { //read sensors
   for (int i = 0; i < NUM_SENSORS; i++) {
     Serial.print(sensorStates[i]);
     if (i < NUM_SENSORS - 1) {
-      Serial.print(","); //comma-separated values; js takes care of comma separation
+      Serial.print(",");
     }
   }
   Serial.println(); // newline to terminate the line

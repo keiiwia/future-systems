@@ -14,8 +14,9 @@ let onSensorUpdateCallback = null;
  * init hardware connection
  * @param {HTMLElement} connectBtn
  * @param {HTMLElement} statusEl
+ * @param {Function} onConnected - optional callback fired after serial port opens
  */
-function initHardware(connectBtn, statusEl) { //connect to serial port 
+function initHardware(connectBtn, statusEl, onConnected) { //connect to serial port 
   connectBtn.addEventListener("click", async () => {
     if (!("serial" in navigator)) {
       alert("Web Serial API not supported in this browser. Use Chrome/Edge.");
@@ -27,6 +28,9 @@ function initHardware(connectBtn, statusEl) { //connect to serial port
       await port.open({ baudRate: BAUD_RATE });
 
       statusEl.textContent = "Connected. Waiting for data…";
+      if (typeof onConnected === "function") {
+        onConnected();
+      }
 
       const textDecoder = new TextDecoderStream();
       port.readable.pipeTo(textDecoder.writable);
