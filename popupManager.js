@@ -59,7 +59,7 @@ function getRandomPosition(popupElement, popupIndex) {
 
 /**
  * update states
- * @param {Array<number>} sensorStates - Array of sensor states (0 or 1)
+ * @param {Array<number>} sensorStates - array of sensor states (0 or 1)
  */
 function updatePopups(sensorStates) {
   if (!statusEl) return;
@@ -76,8 +76,8 @@ function updatePopups(sensorStates) {
     );
 
     if (curr === 1) {
-      popup.style.display = "none";  // Hide when covered
-      popupPositions.delete(i); // Remove from position tracking
+      popup.style.display = "none"; 
+      popupPositions.delete(i); // remove from position tracking
     } else {
       const wasHidden = popup.style.display === 'none' || !popupPositions.has(i); // if uncovered
       

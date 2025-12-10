@@ -137,13 +137,13 @@ button:hover {
 }
 
 .popup-content {
-  background: #fff;
-  color: #111;
-  padding: 24px 32px;
-  max-width: 300px;
-  min-width: 250px;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  max-width: none;
+  min-width: 0;
   text-align: center;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: none;
   position: relative;
 }
 
@@ -192,4 +192,30 @@ button:hover {
   grid-column: 4 / 6; /* cols 4-5 */
   grid-row: 4 / 5;    /* rows 4 */
   margin-top: -80px; 
+}
+
+.popup-img {
+  display: block;
+  max-width: 160px;
+  height: auto;
+  pointer-events: none;
+}
+
+#sensor-tabs {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  display: none; /* hidden to avoid duplicate images; retained for future use */
+  flex-wrap: wrap;
+  gap: 10px;
+  z-index: 1100;
+  pointer-events: none;
+}
+
+.sensor-tab {
+  display: none;
+  max-width: 140px;
+  height: auto;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
 }
