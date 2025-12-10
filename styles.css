@@ -196,7 +196,8 @@ button:hover {
 
 .popup-img {
   display: block;
-  max-width: 160px;
+  width: min(60vw, 480px); /* responsive cap at 3x but limited by viewport */
+  max-width: 100%;
   height: auto;
   pointer-events: none;
 }

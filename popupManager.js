@@ -7,8 +7,8 @@ let statusEl = null;
 const allowedCells = [];
 
 //allowed grid cells (1-based)
-for (let col = 3; col <= 6; col++) {
-  for (let row = 2; row <= 5; row++) {
+for (let col = 3; col <= 4; col++) {
+  for (let row = 2; row <= 3; row++) {
     allowedCells.push({ col, row });
   }
 }
