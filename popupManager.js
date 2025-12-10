@@ -1,5 +1,5 @@
 //handles popup positions + visibility
-const POPUP_PADDING = 20; // min distance between popups (collison)
+const POPUP_PADDING = 20; // min distance between popups (collision) – retained for future use
 
 let popups = [];
 let popupPositions = new Map(); // map of popup index to {x, y, width, height}
@@ -20,7 +20,7 @@ function initPopupManager(numSensors, statusElement) {
 }
 
 /**
- * calculate a random position for a popup 
+ * calculate a centered position for a popup 
  * @param {HTMLElement} popupElement - dom element
  * @param {number} popupIndex - index of the popup correlated to specific screen/popup
  * @returns {Object|null} fallback
@@ -50,44 +50,10 @@ function getRandomPosition(popupElement, popupIndex) {
   }
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
-  
-  //fit within media size
-  if (popupWidth >= windowWidth || popupHeight >= windowHeight) {
-    return { x: 0, y: 0, width: popupWidth, height: popupHeight };
-  }
-  
-  //keep running until collision-free
-  const maxAttempts = 100;
-  for (let attempt = 0; attempt < maxAttempts; attempt++) {
-    const x = Math.random() * (windowWidth - popupWidth);
-    const y = Math.random() * (windowHeight - popupHeight);
-    let overlaps = false;
 
-    for (const [index, pos] of popupPositions.entries()) {
-      //skip against itself
-      if (index === popupIndex) continue;
-      
-      //check if popup at this index is currently visible (else ignorer)
-      const otherPopup = popups[index];
-      if (!otherPopup || otherPopup.style.display === 'none') 
-        continue;
-      const horizontalOverlap = !(x + popupWidth + POPUP_PADDING < pos.x || x - POPUP_PADDING > pos.x + pos.width);
-      const verticalOverlap = !(y + popupHeight + POPUP_PADDING < pos.y || y - POPUP_PADDING > pos.y + pos.height);
-      
-      if (horizontalOverlap && verticalOverlap) {
-        overlaps = true;
-        break;
-      }
-    }
-    
-    if (!overlaps) {
-      return { x, y, width: popupWidth, height: popupHeight };
-    }
-  }
-  
-  // last resort: if cant find collision free just randomize position hope and pray lol
-  const x = Math.random() * (windowWidth - popupWidth);
-  const y = Math.random() * (windowHeight - popupHeight);
+  // center the popup within the visible CRT area (entire viewport)
+  const x = Math.max(0, (windowWidth - popupWidth) / 2);
+  const y = Math.max(0, (windowHeight - popupHeight) / 2);
   return { x, y, width: popupWidth, height: popupHeight };
 }
 
